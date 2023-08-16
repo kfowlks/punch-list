@@ -1,8 +1,93 @@
 allow_embedding: false
-package_name: Rally_App_1
-name: Rally App 1
+package_name: Punch_List
+db_schema:
+  users:
+    client: none
+    server: full
+    columns:
+    - name: email
+      type: string
+      admin_ui: {order: 0, width: 200}
+    - name: enabled
+      type: bool
+      admin_ui: {order: 1, width: 200}
+    - name: last_login
+      type: datetime
+      admin_ui: {order: 2, width: 200}
+    - name: password_hash
+      type: string
+      admin_ui: {order: 3, width: 200}
+    - name: n_password_failures
+      type: number
+      admin_ui: {order: 4, width: 200}
+    - name: confirmed_email
+      type: bool
+      admin_ui: {order: 5, width: 200}
+    - name: signed_up
+      type: datetime
+      admin_ui: {order: 6, width: 200}
+    title: Users
+  projects:
+    client: none
+    server: full
+    columns:
+    - name: Title
+      admin_ui: {order: 0, width: 200}
+      type: string
+    - name: Ref
+      admin_ui: {order: 1, width: 200}
+      type: string
+    - name: Client Name
+      admin_ui: {order: 2, width: 200}
+      type: string
+    - name: Date
+      admin_ui: {order: 3, width: 200}
+      type: datetime
+    - name: Comment
+      admin_ui: {order: 4, width: 200}
+      type: string
+    - name: Tags
+      admin_ui: {order: 5, width: 200}
+      type: string
+    - name: Owner
+      admin_ui: {order: 6, width: 200}
+      type: link_single
+      target: users
+    - name: Issues
+      admin_ui: {order: 7, width: 200}
+      type: link_multiple
+      target: issues
+    title: Projects
+  issues:
+    client: none
+    server: full
+    columns:
+    - name: Title
+      admin_ui: {order: 0, width: 200}
+      type: string
+    - name: Assigned to
+      admin_ui: {order: 1, width: 200}
+      type: string
+    - name: Comments
+      admin_ui: {order: 2, width: 200}
+      type: string
+    - name: Complete
+      admin_ui: {order: 3, width: 200}
+      type: bool
+    - name: Content
+      admin_ui: {order: 4, width: 200}
+      type: media
+    title: Issues
+name: Punch List
 startup_form: Form1
 native_deps: {head_html: '<link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;600&family=Roboto+Condensed:wght@300;400;700&display=swap"
     rel="stylesheet" rel="preload" as="font" crossorigin="anonymous">'}
 runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
-services: []
+services:
+- source: /runtime/services/tables.yml
+  client_config: {}
+  server_config: {}
+- source: /runtime/services/anvil/users.yml
+  client_config: {allow_signup: true, enable_automatically: true, use_email: true,
+    confirm_email: true}
+  server_config: {user_table: users}
