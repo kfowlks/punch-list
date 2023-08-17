@@ -7,7 +7,7 @@ from anvil.tables import app_tables
 import anvil.users
 from .ProjectEdit import ProjectEdit
 from .ProjectView import ProjectView
-
+from .About import About
 
 class Main(MainTemplate):
   def __init__(self, **properties):
@@ -40,19 +40,13 @@ class Main(MainTemplate):
     
   def button_1_click(self, **event_args):
     """This method is called when the button is clicked"""    
-    new_project = {}
-    
-    save_clicked = alert(
-      content=ProjectEdit(item=new_project),
-      title="Add Project",
-      large=True,
-      buttons=[("Save", True), ("Cancel", False)]
-    )
+    new_panel = About()
 
-    if save_clicked:
-      print(new_project)
-      anvil.server.call('add_project', new_project)
-      Notification("Project Added!").show()
+    # The top-level form has a component called 
+    # column_panel. Clear it and put a new Form2() panel there: 
+    get_open_form().Column_panel.clear()
+    get_open_form().Column_panel.add_component(new_panel)
+
 
   def add_project(self, **event_args):
       """This method is called when the button is clicked"""    
