@@ -11,18 +11,15 @@ class ProjectView(ProjectViewTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-
     # Any code you write here will run before the form opens.
 
   def submit_button_click(self, **event_args):
-
     title = self.title_box.text
     ref = self.ref_box.text
     client_name = self.client_name_box.text
     project_date = self.project_date_picker.date
     comment = self.comment_area.text
     tags = self.tags_box.text
-
     self.clear_inputs()
 
   def clear_inputs(self):
@@ -64,11 +61,11 @@ class ProjectView(ProjectViewTemplate):
         large=True,
         buttons=[("Save", True), ("Cancel", False)]
       )
-     # Update the article if the user clicks save 
+    # Update the article if the user clicks save 
     if save_clicked:
       anvil.server.call('update_project', self.item, project_copy)
 
-      # Now refresh the page 
-      self.refresh_data_bindings()
+     # Now refresh the page 
+    self.refresh_data_bindings()
 
 
