@@ -47,6 +47,12 @@ class ProjectEdit(ProjectEditTemplate):
     """This method is called when refreshing_data_bindings is called"""
     pass
 
+  def file_loader_1_change(self, file, **event_args):
+    """This method is called when a new file is loaded into this FileLoader"""
+    self.item['MainPhoto'] = file
+    self.refresh_data_bindings()
+
+
 
 
   

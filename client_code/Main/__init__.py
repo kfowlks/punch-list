@@ -29,7 +29,7 @@ class Main(MainTemplate):
     #  pd = 
 
   def delete_project(self, project_dict, **event_args):
-    anvil.server.call('delete_project', user)
+    anvil.server.call('delete_project', project_dict)
     self.refresh_projects()
 
     # Any code you write here will run before the form opens.

@@ -5,7 +5,7 @@ import anvil.users
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
-
+from ..ProjectEdit import ProjectEdit
 
 class ProjectView(ProjectViewTemplate):
   def __init__(self, **properties):
@@ -49,6 +49,26 @@ class ProjectView(ProjectViewTemplate):
   def delete_project_button_click(self, **event_args):
     """This method is called when the button is clicked"""
     print(self.item)
-    if confirm(f"Are you sure you want to delete {self.item['title']}?"):
-      self.parent.raise_event('x-delete-project', project=self.item)
+    if confirm(f"Are you sure you want to delete {self.item['Title']}?"):
+      self.parent.raise_event('x-delete-project', project_dict=self.item)
+
+  def edit_project_button_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    # Create a copy of the existing article from the Data Table 
+    project_copy = dict(self.item)
+    # Open an alert displaying the 'ArticleEdit' Form 
+    # set the `self.item` property of the ArticleEdit Form to a copy of the article to be updated 
+    save_clicked = alert(
+        content=ProjectEdit(item=project_copy),
+        title="Update Project",
+        large=True,
+        buttons=[("Save", True), ("Cancel", False)]
+      )
+     # Update the article if the user clicks save 
+    if save_clicked:
+      anvil.server.call('update_project', self.item, project_copy)
+
+      # Now refresh the page 
+      self.refresh_data_bindings()
+
 
