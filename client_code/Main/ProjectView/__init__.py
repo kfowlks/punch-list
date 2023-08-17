@@ -68,4 +68,9 @@ class ProjectView(ProjectViewTemplate):
      # Now refresh the page 
     self.refresh_data_bindings()
 
+  def title_show(self, **event_args):
+    """This method is called when the Label is shown on the screen"""
+    pass
+
+
 
