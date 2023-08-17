@@ -45,3 +45,10 @@ class ProjectView(ProjectViewTemplate):
   def form_refreshing_data_bindings(self, **event_args):
     """This method is called when refreshing_data_bindings is called"""
     pass
+
+  def delete_project_button_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    print(self.item)
+    if confirm(f"Are you sure you want to delete {self.item['title']}?"):
+      self.parent.raise_event('x-delete-project', project=self.item)
+
