@@ -1,0 +1,26 @@
+container:
+  type: ColumnPanel
+  properties: {col_widths: '{}'}
+  event_bindings: {}
+components:
+- type: ColumnPanel
+  properties: {role: card, col_widths: '{}'}
+  name: card_1
+  layout_properties: {grid_position: 'GUABEZ,WAGFYX'}
+  components:
+  - type: Image
+    properties: {}
+    name: image_1
+    layout_properties: {grid_position: 'POMJNT,DKLXMQ'}
+    data_bindings:
+    - {property: source, code: 'self.item[''MainPhoto'']'}
+  - type: Label
+    properties: {role: title, align: center, tooltip: '', border: '', foreground: '',
+      visible: true, text: title, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
+      underline: false, icon: ''}
+    name: title
+    layout_properties: {grid_position: 'BWODSR,XRCGDQ'}
+    data_bindings:
+    - {property: text, code: 'self.item[''Title'']'}
+is_package: true

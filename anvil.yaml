@@ -1,5 +1,19 @@
-allow_embedding: false
+services:
+- source: /runtime/services/tables.yml
+  client_config: {}
+  server_config: {}
+- source: /runtime/services/anvil/users.yml
+  client_config: {allow_signup: true, enable_automatically: true, use_email: true,
+    confirm_email: true}
+  server_config: {user_table: users}
+startup: {type: form, module: Main}
 package_name: Punch_List
+allow_embedding: false
+name: Punch List
+runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
+startup_form: null
+native_deps: {head_html: '<link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;600&family=Roboto+Condensed:wght@300;400;700&display=swap"
+    rel="stylesheet" rel="preload" as="font" crossorigin="anonymous">'}
 db_schema:
   users:
     client: none
@@ -26,6 +40,9 @@ db_schema:
     - name: signed_up
       type: datetime
       admin_ui: {order: 6, width: 200}
+    - name: email_confirmation_key
+      admin_ui: {width: 200}
+      type: string
     title: Users
   projects:
     client: none
@@ -37,12 +54,9 @@ db_schema:
     - name: Ref
       admin_ui: {order: 1, width: 200}
       type: string
-    - name: Client Name
+    - name: Client_Name
       admin_ui: {order: 2, width: 200}
       type: string
-    - name: Date
-      admin_ui: {order: 3, width: 200}
-      type: datetime
     - name: Comment
       admin_ui: {order: 4, width: 200}
       type: string
@@ -57,6 +71,15 @@ db_schema:
       admin_ui: {order: 7, width: 200}
       type: link_multiple
       target: issues
+    - name: Created
+      admin_ui: {width: 200}
+      type: datetime
+    - name: Project_Date
+      admin_ui: {order: 1.5, width: 200}
+      type: date
+    - name: MainPhoto
+      admin_ui: {order: 9, width: 200}
+      type: media
     title: Projects
   issues:
     client: none
@@ -78,16 +101,17 @@ db_schema:
       admin_ui: {order: 4, width: 200}
       type: media
     title: Issues
-name: Punch List
-startup_form: Form1
-native_deps: {head_html: '<link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;600&family=Roboto+Condensed:wght@300;400;700&display=swap"
-    rel="stylesheet" rel="preload" as="font" crossorigin="anonymous">'}
-runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
-services:
-- source: /runtime/services/tables.yml
-  client_config: {}
-  server_config: {}
-- source: /runtime/services/anvil/users.yml
-  client_config: {allow_signup: true, enable_automatically: true, use_email: true,
-    confirm_email: true}
-  server_config: {user_table: users}
+  settings:
+    client: none
+    server: full
+    columns:
+    - name: Logo
+      admin_ui: {order: 0, width: 200}
+      type: media
+    - name: Company_Name
+      admin_ui: {order: 1, width: 200}
+      type: string
+    - name: Auditor
+      admin_ui: {order: 2, width: 200}
+      type: string
+    title: Settings

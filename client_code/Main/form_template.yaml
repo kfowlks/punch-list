@@ -15,7 +15,7 @@ components:
     components:
     - type: TextBox
       properties: {}
-      name: text_box_1
+      name: search_box
       layout_properties: {grid_position: 'IMPOOE,KVUISX', row: RJCGDW, width_xs: 8,
         col_xs: 0}
     - type: Button
@@ -23,21 +23,13 @@ components:
         foreground: '', visible: true, text: Add Project, font_size: null, font: '',
         spacing_above: small, icon_align: left, spacing_below: small, italic: false,
         background: '', bold: false, underline: false, icon: ''}
-      name: button_1
+      name: add_project_button
       layout_properties: {grid_position: 'LKLZIJ,UUBWXO', row: RJCGDW, width_xs: 3,
         col_xs: 0, width: 750}
-  - type: Image
-    properties: {}
-    name: image_1
-    layout_properties: {grid_position: 'NPMKGM,OZIIKM RINUHI,JZFAKF'}
-  - type: Label
-    properties: {role: null, align: center, tooltip: '', border: '', foreground: '',
-      visible: true, text: '', font_size: null, font: '', spacing_above: small, icon_align: left,
-      spacing_below: small, italic: false, background: '', bold: false, underline: false,
-      icon: ''}
-    name: label_1
-    layout_properties: {grid_position: 'NPMKGM,OZIIKM ZDWPTE,IFNGMG'}
+      event_bindings: {click: add_project_button}
   - type: RepeatingPanel
-    properties: {item_template: Form1.ItemTemplate1}
-    name: repeating_panel_1
+    properties: {role: null, tooltip: '', border: '', foreground: '', items: null,
+      visible: true, spacing_above: small, spacing_below: small, item_template: Main.ProjectView,
+      background: ''}
+    name: projects_panel
     layout_properties: {grid_position: 'NPMKGM,WVXCCK'}
