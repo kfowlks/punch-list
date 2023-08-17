@@ -11,26 +11,26 @@ from .ProjectView import ProjectView
 
 class Main(MainTemplate):
   def __init__(self, **properties):
-
     # Set Form properties and Data Bindings.
-
     self.init_components(**properties)
-
+    
     # Continue until user logs in
     while not anvil.users.login_with_form():
       pass
 
     self.my_projects = anvil.server.call('get_projects')
-
     print(self.my_projects)
-    
     self.refresh_projects()
+    self.set_event_handler('x-delete-project', self.delete_project)
+    self.projects_panel.set_event_handler('x-delete-project', self.delete_project)
     
     #self.my_projects = [ (project['title'], project) for project in my_projects.search()]
-
     #for row in self.my_projects.search():
     #  pd = 
 
+  def delete_project(self, project_dict, **event_args):
+    anvil.server.call('delete_project', user)
+    self.refresh_projects()
 
     # Any code you write here will run before the form opens.
   def refresh_projects(self):

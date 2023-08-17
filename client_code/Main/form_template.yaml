@@ -5,7 +5,7 @@ container:
 components:
 - type: ColumnPanel
   properties: {col_widths: '{}'}
-  name: column_panel_1
+  name: Column_panel
   layout_properties: {slot: default}
   components:
   - type: GridPanel
