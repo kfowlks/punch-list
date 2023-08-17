@@ -10,11 +10,17 @@ components:
   components:
   - type: Label
     properties: {role: headline, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: Project, font_size: null, font: '', spacing_above: small,
+      visible: true, text: Projects, font_size: null, font: '', spacing_above: small,
       icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
       underline: false, icon: ''}
     name: label_1
-    layout_properties: {grid_position: 'FZNCZW,TSQEYT'}
+    layout_properties: {grid_position: 'FZNCZW,WZITEH'}
+  - type: Image
+    properties: {}
+    name: photo
+    layout_properties: {grid_position: 'JFDSVO,UZODUP'}
+    data_bindings:
+    - {property: source, code: 'self.item[''MainPhoto'']'}
   - type: Label
     properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
       visible: true, text: 'Title:', font_size: null, font: '', spacing_above: small,

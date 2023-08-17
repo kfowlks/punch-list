@@ -11,6 +11,7 @@ package_name: Punch_List
 allow_embedding: false
 name: Punch List
 runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
+metadata: {logo_img: 'asset:54270.jpg'}
 startup_form: null
 native_deps: {head_html: '<link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;600&family=Roboto+Condensed:wght@300;400;700&display=swap"
     rel="stylesheet" rel="preload" as="font" crossorigin="anonymous">'}
@@ -88,18 +89,21 @@ db_schema:
     - name: Title
       admin_ui: {order: 0, width: 200}
       type: string
-    - name: Assigned to
+    - name: Assigned_To
       admin_ui: {order: 1, width: 200}
       type: string
-    - name: Comments
+    - name: Comment
       admin_ui: {order: 2, width: 200}
       type: string
     - name: Complete
       admin_ui: {order: 3, width: 200}
       type: bool
-    - name: Content
+    - name: Photo
       admin_ui: {order: 4, width: 200}
       type: media
+    - name: Created
+      admin_ui: {order: 5, width: 200}
+      type: datetime
     title: Issues
   settings:
     client: none

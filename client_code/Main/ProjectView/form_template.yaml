@@ -2,6 +2,7 @@ container:
   type: ColumnPanel
   properties: {col_widths: '{}'}
   event_bindings: {}
+  data_bindings: []
 components:
 - type: ColumnPanel
   properties: {role: card, col_widths: '{}'}

@@ -54,7 +54,7 @@ class Main(MainTemplate):
       anvil.server.call('add_project', new_project)
       Notification("Project Added!").show()
 
-  def add_project_button(self, **event_args):
+  def add_project(self, **event_args):
       """This method is called when the button is clicked"""    
       new_project = {}
     
