@@ -81,6 +81,10 @@ db_schema:
     - name: MainPhoto
       admin_ui: {order: 9, width: 200}
       type: media
+    - name: Issues
+      admin_ui: {width: 200}
+      type: link_multiple
+      target: issues
     title: Projects
   issues:
     client: none
@@ -106,7 +110,7 @@ db_schema:
       type: datetime
     - name: Project
       admin_ui: {width: 200}
-      type: link_multiple
+      type: link_single
       target: projects
     title: Issues
   settings:
