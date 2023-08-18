@@ -67,7 +67,6 @@ class IssueView(IssueViewTemplate):
     if save_clicked:      
       anvil.server.call('update_issue', self.item, issue_copy)
       self.parent.raise_event('x-refresh-list')
-      
 
      # Now refresh the page
     self.refresh_data_bindings()

@@ -22,6 +22,7 @@ class ProjectIssues(ProjectIssuesTemplate):
     
     self.set_event_handler('x-delete-issue', self.delete_issue)
     self.repeating_panel_1.set_event_handler('x-delete-issue', self.delete_issue)
+    self.set_event_handler('x-refresh-list', self.reload)
     self.repeating_panel_1.set_event_handler('x-refresh-list', self.reload)
     self.repeating_panel_1.items = anvil.server.call('get_project_issues', self.item)
      
@@ -46,29 +47,20 @@ class ProjectIssues(ProjectIssuesTemplate):
         buttons=[("Save", True), ("Cancel", False)]
       )
     
-      print(new_issue)
-    
       if save_clicked:
         print(new_issue)
         anvil.server.call('add_issue', new_issue)
-        Notification("Issue Added!").show()
-        self.parent.raise_event('x-refresh-list')
+        self.raise_event('x-refresh-list')
+        Notification("Issue Added!").show()       
 
   def button_1_click(self, **event_args):
-    """This method is called when the button is clicked"""
     open_form('Main')
-      
-
 
   def delete_issue(self, issue_dict, **event_args):
     anvil.server.call('delete_issue', issue_dict)
-    self.parent.raise_event('x-refresh-list')
+    self.raise_event('x-refresh-list')
 
-
-    # Any code you write here will run before the form opens.
   def refresh_project(self):
-    # Load existing projects from the Data Table, 
-    # and display them in the RepeatingPanel 
    self.item = anvil.server.call('get_project', item.get_id())
    self.refresh_data_bindings()
 
