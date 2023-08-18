@@ -21,14 +21,16 @@ class ProjectIssues(ProjectIssuesTemplate):
       print(self.item)
       new_issue = {}
     
-      new_issue['Project'] = self.item
+      #new_issue['Project'] = self.item.get_id()
       save_clicked = alert(
         content=IssueEdit(item=new_issue),
         title="Add Issue",
         large=True,
         buttons=[("Save", True), ("Cancel", False)]
       )
-
+    
+      print(new_issue)
+    
       if save_clicked:
         print(new_issue)
         anvil.server.call('add_issue', new_issue)
