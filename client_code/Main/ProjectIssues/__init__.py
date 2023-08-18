@@ -12,7 +12,12 @@ class ProjectIssues(ProjectIssuesTemplate):
     print (project_id)
     self.init_components(**properties)
     self.item = anvil.server.call('get_project', project_id)
-    
+    print (self.item)
+    print (self.item[0])
+    print (self.item['Title'])
+
+    self.repeating_panel_1.items = anvil.server.call('get_project_issues', self.item)
+     
     #print(self.project_dict)
     # Any code you write here will run before the form opens.
 
@@ -20,6 +25,7 @@ class ProjectIssues(ProjectIssuesTemplate):
       """This method is called when the button is clicked"""    
       print(self.item)
       new_issue = {}
+      new_issue['Project'] = self.item
     
       #new_issue['Project'] = self.item.get_id()
       save_clicked = alert(
@@ -38,6 +44,7 @@ class ProjectIssues(ProjectIssuesTemplate):
 
   def button_1_click(self, **event_args):
     """This method is called when the button is clicked"""
+    open_form('Main')
       
 
 

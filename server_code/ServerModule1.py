@@ -24,6 +24,15 @@ def get_projects():
    if me:
      return app_tables.projects.client_writable(Owner = me).search(tables.order_by("Created", ascending=False))
 
+
+@anvil.server.callable
+def get_project_issues(project):
+  if app_tables.projects.has_row(project):
+    return app_tables.issues.search(Project=project)
+  else:
+    raise Exception("Project does not exist")
+
+
 @anvil.server.callable
 def add_project(project_dict):
   app_tables.projects.add_row( Created=datetime.now(),
