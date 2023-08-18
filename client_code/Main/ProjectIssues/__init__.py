@@ -10,32 +10,33 @@ from .IssueView import IssueView
 
 class ProjectIssues(ProjectIssuesTemplate):
   def __init__(self, project_id, **properties):
-    
+    # Any code you write here will run before the form opens.
     # Set Form properties and Data Bindings.    
-    self.project_id = project_id
+    
     self.init_components(**properties)
-    self.item = anvil.server.call('get_project', self.project_id)
+    self.project_id = project_id
+    self.item = anvil.server.call('get_project', self.project_id) # Get Project dict
     
     print (self.item)
     print (self.item[0])
     print (self.item['Title'])
     
     self.set_event_handler('x-delete-issue', self.delete_issue)
-    self.repeating_panel_1.set_event_handler('x-delete-issue', self.delete_issue)
     self.set_event_handler('x-refresh-list', self.reload)
+    
+    self.repeating_panel_1.set_event_handler('x-delete-issue', self.delete_issue)   
     self.repeating_panel_1.set_event_handler('x-refresh-list', self.reload)
+    
     self.repeating_panel_1.items = anvil.server.call('get_project_issues', self.item)
      
-    #print(self.project_dict)
-    # Any code you write here will run before the form opens.
+    
   def reload(self, **event_args):
     print("Reload called")
-    self.repeating_panel_1.items = anvil.server.call('get_project_issues', self.item)
-    #self.refresh_data_bindings()
+    self.repeating_panel_1.items = anvil.server.call('get_project_issues', self.item)    
   
   def add_issue_button_click(self, **event_args):
       """This method is called when the button is clicked"""    
-      print(self.item)
+      
       new_issue = {}
       new_issue['Project'] = self.item
     
@@ -47,8 +48,7 @@ class ProjectIssues(ProjectIssuesTemplate):
         buttons=[("Save", True), ("Cancel", False)]
       )
     
-      if save_clicked:
-        print(new_issue)
+      if save_clicked:        
         anvil.server.call('add_issue', new_issue)
         self.raise_event('x-refresh-list')
         Notification("Issue Added!").show()       
