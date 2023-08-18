@@ -31,6 +31,12 @@ def add_project(project_dict):
                                **project_dict )
 
 @anvil.server.callable
+def add_issue(issue_dict):
+  app_tables.issues.add_row( Created=datetime.now(),
+                               **issue_dict )
+
+
+@anvil.server.callable
 def delete_project(project_dict):
   # check that the article being deleted exists in the Data Table 
   if app_tables.projects.has_row(project_dict):    
@@ -47,3 +53,11 @@ def update_project(project, project_dict):
     project.update(**project_dict)
   else:
     raise Exception('No such project')
+
+
+# This function is safe: It will only update rows from the 
+# `projects` table. 
+@anvil.server.callable
+def get_project(project_id):
+  print(project_id)
+  return app_tables.projects.get_by_id(project_id)

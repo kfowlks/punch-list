@@ -15,36 +15,58 @@ components:
     properties: {}
     name: Image
     layout_properties: {grid_position: 'QZSSAI,REFMDB'}
+    data_bindings:
+    - {property: source, code: 'self.item[''Photo'']'}
   - type: Label
-    properties: {}
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: Title, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
     name: title_label
-    layout_properties: {grid_position: 'YNLNJR,DCNDBS'}
+    layout_properties: {grid_position: 'YNLNJR,DGJFOR'}
   - type: TextBox
     properties: {}
     name: title_box
     layout_properties: {grid_position: 'YNLNJR,BONUCD'}
+    data_bindings:
+    - {property: text, code: 'self.item[''Title'']', writeback: true}
   - type: Label
-    properties: {}
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: Assigned To, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
     name: assigned_to
-    layout_properties: {grid_position: 'EKPOWQ,GYLWXK'}
+    layout_properties: {grid_position: 'EKPOWQ,LLGQUD'}
   - type: TextBox
     properties: {}
     name: assigned_to_box
     layout_properties: {grid_position: 'EKPOWQ,YREYLO'}
+    data_bindings:
+    - {property: text, code: 'self.item[''Assigned_To'']', writeback: true}
   - type: Label
-    properties: {}
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: Comment, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
     name: comment_label
-    layout_properties: {grid_position: 'ZEOTOW,MPSIAR'}
+    layout_properties: {grid_position: 'ZEOTOW,PEOMJK'}
   - type: TextArea
     properties: {}
     name: comment_area
     layout_properties: {grid_position: 'ZEOTOW,ABUKPZ'}
+    data_bindings:
+    - {property: text, code: 'self.item[''Comment'']', writeback: true}
   - type: Label
-    properties: {}
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: Completed, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
     name: Completed
     layout_properties: {grid_position: 'HIONDL,SZDQJK'}
   - type: CheckBox
     properties: {text: check_box_1}
     name: completed_check_box
     layout_properties: {grid_position: 'HIONDL,XVTZMA'}
+    data_bindings:
+    - {property: checked, code: 'self.item[''Complete'']', writeback: true}
 is_package: true

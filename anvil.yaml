@@ -72,10 +72,6 @@ db_schema:
       admin_ui: {order: 6, width: 200}
       type: link_single
       target: users
-    - name: Issues
-      admin_ui: {order: 7, width: 200}
-      type: link_multiple
-      target: issues
     - name: Created
       admin_ui: {width: 200}
       type: datetime
@@ -108,6 +104,10 @@ db_schema:
     - name: Created
       admin_ui: {order: 5, width: 200}
       type: datetime
+    - name: Project
+      admin_ui: {width: 200}
+      type: link_multiple
+      target: projects
     title: Issues
   settings:
     client: none

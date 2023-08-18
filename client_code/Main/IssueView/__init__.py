@@ -1,4 +1,4 @@
-from ._anvil_designer import ProjectViewTemplate
+from ._anvil_designer import IssueViewTemplate
 from anvil import *
 import anvil.server
 import anvil.users
@@ -6,9 +6,8 @@ import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 from ..ProjectEdit import ProjectEdit
-from ..ProjectIssues import ProjectIssues
 
-class ProjectView(ProjectViewTemplate):
+class IssueView(IssueViewTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
@@ -52,35 +51,23 @@ class ProjectView(ProjectViewTemplate):
 
   def edit_project_button_click(self, **event_args):
     """This method is called when the button is clicked"""
-    # Create a copy of the existing article from the Data Table 
+    # Create a copy of the existing article from the Data Table
     project_copy = dict(self.item)
-    # Open an alert displaying the 'ArticleEdit' Form 
-    # set the `self.item` property of the ArticleEdit Form to a copy of the article to be updated 
+    # Open an alert displaying the 'ArticleEdit' Form
+    # set the `self.item` property of the ArticleEdit Form to a copy of the article to be updated
     save_clicked = alert(
         content=ProjectEdit(item=project_copy),
         title="Update Project",
         large=True,
         buttons=[("Save", True), ("Cancel", False)]
       )
-    # Update the article if the user clicks save 
+    # Update the article if the user clicks save
     if save_clicked:
       anvil.server.call('update_project', self.item, project_copy)
 
-     # Now refresh the page 
+     # Now refresh the page
     self.refresh_data_bindings()
 
   def title_show(self, **event_args):
     """This method is called when the Label is shown on the screen"""
     pass
-
-  def button_1_click(self, **event_args):
-    #new_panel = ProjectIssues(project_dict=self.item)
-    #open_form(ProjectIssues(project_id = self.item.get_id()))
-    #print(self.item)
-    # The top-level form has a component called 
-    # column_panel. Clear it and put a new Form2() panel there: 
-    get_open_form().Column_panel.clear()
-    get_open_form().Column_panel.add_component(ProjectIssues(project_id = self.item.get_id()))
-
-
-
