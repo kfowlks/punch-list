@@ -49,3 +49,6 @@ class ProjectIssues(ProjectIssuesTemplate):
       
 
 
+  def delete_issue(self, issue_dict, **event_args):
+    anvil.server.call('delete_issue', issue_dict)
+    #self.refresh_projects()
