@@ -25,6 +25,9 @@ def get_projects():
      return app_tables.projects.client_writable(Owner = me).search(tables.order_by("Created", ascending=False))
 
 
+
+
+
 @anvil.server.callable
 def get_project_issues(project):
   if app_tables.projects.has_row(project):
@@ -85,6 +88,5 @@ def update_project(project, project_dict):
 # This function is safe: It will only update rows from the 
 # `projects` table. 
 @anvil.server.callable
-def get_project(project_id):
-  print(project_id)
+def get_project(project_id):  
   return app_tables.projects.get_by_id(project_id)

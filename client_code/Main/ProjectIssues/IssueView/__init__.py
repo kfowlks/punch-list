@@ -41,13 +41,15 @@ class IssueView(IssueViewTemplate):
 
   def form_refreshing_data_bindings(self, **event_args):
     """This method is called when refreshing_data_bindings is called"""
-    pass
+    
+    
 
   def delete_issue_button_click(self, **event_args):
     """This method is called when the button is clicked"""
     print(self.item)
+    print(self.item[0])
     if confirm(f"Are you sure you want to delete {self.item['Title']}?"):
-      self.parent.raise_event('x-delete-issue', project_dict=self.item)
+      self.parent.raise_event('x-delete-issue', issue_dict=self.item)
 
   def edit_issue_button_click(self, **event_args):
     """This method is called when the button is clicked"""
@@ -62,8 +64,10 @@ class IssueView(IssueViewTemplate):
         buttons=[("Save", True), ("Cancel", False)]
       )
     # Update the article if the user clicks save
-    if save_clicked:
+    if save_clicked:      
       anvil.server.call('update_issue', self.item, issue_copy)
+      self.parent.raise_event('x-refresh-list')
+      
 
      # Now refresh the page
     self.refresh_data_bindings()

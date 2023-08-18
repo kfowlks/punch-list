@@ -1,7 +1,7 @@
 container:
   type: ColumnPanel
   properties: {col_widths: '{}'}
-  event_bindings: {}
+  event_bindings: {refreshing_data_bindings: form_refreshing_data_bindings}
   data_bindings: []
 components:
 - type: ColumnPanel
