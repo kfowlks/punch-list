@@ -18,7 +18,9 @@ class ProjectIssues(ProjectIssuesTemplate):
 
   def add_issue_button_click(self, **event_args):
       """This method is called when the button is clicked"""    
+      print(self.item)
       new_issue = {}
+    
       new_issue['Project'] = self.item
       save_clicked = alert(
         content=IssueEdit(item=new_issue),
