@@ -43,27 +43,27 @@ class IssueView(IssueViewTemplate):
     """This method is called when refreshing_data_bindings is called"""
     pass
 
-  def delete_project_button_click(self, **event_args):
+  def delete_issue_button_click(self, **event_args):
     """This method is called when the button is clicked"""
     print(self.item)
     if confirm(f"Are you sure you want to delete {self.item['Title']}?"):
-      self.parent.raise_event('x-delete-project', project_dict=self.item)
+      self.parent.raise_event('x-delete-issue', project_dict=self.item)
 
-  def edit_project_button_click(self, **event_args):
+  def edit_issue_button_click(self, **event_args):
     """This method is called when the button is clicked"""
     # Create a copy of the existing article from the Data Table
-    project_copy = dict(self.item)
+    issue_copy = dict(self.item)
     # Open an alert displaying the 'ArticleEdit' Form
     # set the `self.item` property of the ArticleEdit Form to a copy of the article to be updated
     save_clicked = alert(
-        content=ProjectEdit(item=project_copy),
-        title="Update Project",
+        content=IssueEdit(item=issue_copy),
+        title="Update Issue",
         large=True,
         buttons=[("Save", True), ("Cancel", False)]
       )
     # Update the article if the user clicks save
     if save_clicked:
-      anvil.server.call('update_project', self.item, project_copy)
+      anvil.server.call('update_issue', self.item, issue_copy)
 
      # Now refresh the page
     self.refresh_data_bindings()
@@ -71,3 +71,6 @@ class IssueView(IssueViewTemplate):
   def title_show(self, **event_args):
     """This method is called when the Label is shown on the screen"""
     pass
+
+
+

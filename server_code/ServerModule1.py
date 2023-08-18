@@ -53,12 +53,30 @@ def delete_project(project_dict):
   else:
     raise Exception("Project does not exist")
 
+@anvil.server.callable
+def delete_issue(issue_dict):
+  # check that the article being deleted exists in the Data Table 
+  if app_tables.issues.has_row(issue_dict):    
+    issue_dict.delete()
+  else:
+    raise Exception("Issue does not exist")
+
+# This function is safe: It will only update rows from the 
+# `issue` table. 
+@anvil.server.callable
+def update_issue(issue, issue_dict):
+  if app_tables.issues.has_row(issue):
+    issue_dict['Updated'] = datetime.now()
+    issue.update(**issue_dict)
+  else:
+    raise Exception('No such issue')
+
 # This function is safe: It will only update rows from the 
 # `projects` table. 
 @anvil.server.callable
 def update_project(project, project_dict):
   if app_tables.projects.has_row(project):
-    #article_dict['updated'] = datetime.now()
+    project_dict['Updated'] = datetime.now()
     project.update(**project_dict)
   else:
     raise Exception('No such project')

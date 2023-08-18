@@ -12,3 +12,9 @@ class IssueEdit(IssueEditTemplate):
     self.init_components(**properties)
 
     # Any code you write here will run before the form opens.
+
+  def Upload(self, file, **event_args):
+    """This method is called when a new file is loaded into this FileLoader"""
+    self.item['Photo'] = file
+    self.refresh_data_bindings()
+

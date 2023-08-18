@@ -17,6 +17,34 @@ components:
     layout_properties: {grid_position: 'QZSSAI,REFMDB'}
     data_bindings:
     - {property: source, code: 'self.item[''Photo'']'}
+  - type: FileLoader
+    properties:
+      role: null
+      show_state: true
+      align: center
+      tooltip: ''
+      border: ''
+      file_types: image/*|video/*;capture=camera
+      enabled: true
+      files: []
+      foreground: ''
+      visible: true
+      text: Upload
+      font_size: null
+      font: ''
+      spacing_above: small
+      icon_align: left
+      spacing_below: small
+      italic: false
+      file: null
+      background: ''
+      bold: false
+      underline: false
+      multiple: false
+      icon: fa:upload
+    name: file_loader_1
+    layout_properties: {grid_position: 'ZQSAPA,FKHGOV'}
+    event_bindings: {change: Upload}
   - type: Label
     properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
       visible: true, text: Title, font_size: null, font: '', spacing_above: small,

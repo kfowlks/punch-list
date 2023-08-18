@@ -85,6 +85,9 @@ db_schema:
       admin_ui: {width: 200}
       type: link_multiple
       target: issues
+    - name: Updated
+      admin_ui: {order: 10, width: 200}
+      type: datetime
     title: Projects
   issues:
     client: none
@@ -112,6 +115,12 @@ db_schema:
       admin_ui: {width: 200}
       type: link_single
       target: projects
+    - name: CompletionDate
+      admin_ui: {order: 7, width: 200}
+      type: date
+    - name: Updated
+      admin_ui: {order: 8, width: 200}
+      type: datetime
     title: Issues
   settings:
     client: none

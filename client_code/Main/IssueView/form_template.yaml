@@ -21,10 +21,36 @@ components:
       icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
       underline: false, icon: ''}
     name: title
-    layout_properties: {grid_position: 'WVAGNF,XWXODQ'}
+    layout_properties: {grid_position: 'NHJZHG,VOPOFS'}
     data_bindings:
     - {property: text, code: 'self.item[''Title'']'}
     event_bindings: {show: title_show}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: 'Completion Date:', font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_4
+    layout_properties: {grid_position: 'WVAGNF,GZCMZR'}
+  - type: Label
+    properties: {}
+    name: label_1
+    layout_properties: {grid_position: 'WVAGNF,TEUHAN'}
+    data_bindings:
+    - {property: text, code: 'self.item[''CompletionDate'']'}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: 'Assigned to:', font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_2
+    layout_properties: {grid_position: 'ZNEHQZ,YHKKCT'}
+  - type: Label
+    properties: {}
+    name: label_3
+    layout_properties: {grid_position: 'ZNEHQZ,ASDECH'}
+    data_bindings:
+    - {property: text, code: 'self.item[''Assigned_To'']'}
   - type: TextArea
     properties: {}
     name: comment
@@ -38,7 +64,7 @@ components:
       underline: false, icon: 'fa:pencil-square'}
     name: edit_project_button
     layout_properties: {grid_position: 'OQGCZQ,VSNVXZ'}
-    event_bindings: {click: edit_project_button_click}
+    event_bindings: {click: edit_issue_button_click}
   - type: FlowPanel
     properties: {role: null, spacing: medium, align: center, tooltip: '', border: '',
       foreground: '', visible: true, spacing_above: small, spacing_below: small, background: ''}
@@ -52,5 +78,5 @@ components:
         underline: false, icon: 'fa:trash'}
       name: delete_project_button
       layout_properties: {}
-      event_bindings: {click: delete_project_button_click}
+      event_bindings: {click: delete_issue_button_click}
 is_package: true

@@ -15,7 +15,8 @@ class ProjectIssues(ProjectIssuesTemplate):
     print (self.item)
     print (self.item[0])
     print (self.item['Title'])
-
+    self.set_event_handler('x-delete-issue', self.delete_issue)
+    self.repeating_panel_1.set_event_handler('x-delete-issue', self.delete_issue)
     self.repeating_panel_1.items = anvil.server.call('get_project_issues', self.item)
      
     #print(self.project_dict)

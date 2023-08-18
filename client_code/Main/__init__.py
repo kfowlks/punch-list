@@ -25,6 +25,7 @@ class Main(MainTemplate):
     self.refresh_projects()
     self.set_event_handler('x-delete-project', self.delete_project)
     self.projects_panel.set_event_handler('x-delete-project', self.delete_project)
+
     
     #self.my_projects = [ (project['title'], project) for project in my_projects.search()]
     #for row in self.my_projects.search():
