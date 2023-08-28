@@ -33,6 +33,7 @@ components:
       background: ''}
     name: projects_panel
     layout_properties: {grid_position: 'NPMKGM,WVXCCK'}
+    data_bindings: []
   - type: Label
     properties: {}
     name: label_1
